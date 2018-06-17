@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>spring-boot-demo</artifactId>
+        <groupId>com.cxb</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>web</artifactId>
+
+    <!--将package值（默认jar）调整成war，这里就必须添加一个web.xml文件了 -->
+    <packaging>war</packaging>
+
+    <!--web依赖于persistence-->
+    <!--web依赖于model-->
+    <!--实现了间接依赖-->
+    <dependencies>
+        <!--添加persistence依赖-->
+        <dependency>
+            <groupId>com.cxb</groupId>
+            <version>0.0.1-SNAPSHOT</version>
+            <artifactId>persistence</artifactId>
+        </dependency>
+    </dependencies>
+
+    <!--这里需要指明工程启动的主类，父工程里边不需要build这一块了-->
+    <build>
+        <!--加上这个是因为打成war时，编译出错了-->
+        <defaultGoal>compile</defaultGoal>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <!--指定mainClass-->
+                <configuration>
+                    <mainClass>springbootdemo.SpringBootDemoApplication</mainClass>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
